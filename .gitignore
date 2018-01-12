@@ -58,3 +58,5 @@ atlassian-ide-plugin.xml
 !.vscode/tasks.json
 !.vscode/launch.json
 !.vscode/extensions.json
+
+.cache
