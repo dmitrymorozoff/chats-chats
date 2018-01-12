@@ -24,6 +24,8 @@ jspm_packages
 # Optional npm cache directory
 .npm
 
+cache
+
 dist
 
 # User-specific stuff:
@@ -58,5 +60,3 @@ atlassian-ide-plugin.xml
 !.vscode/tasks.json
 !.vscode/launch.json
 !.vscode/extensions.json
-
-.cache
