@@ -1,18 +1,19 @@
 {
-  "name": "chats",
-  "version": "1.0.0",
-  "main": "index.js",
-  "license": "MIT",
-  "dependencies": {
-    "node-sass": "^4.7.2",
-    "react": "^16.2.0",
-    "react-dom": "^16.2.0"
-  },
-  "devDependencies": {
-    "babel-preset-env": "^1.6.1",
-    "babel-preset-react": "^6.24.1"
-  },
-  "scripts": {
-    "start": "parcel ./src/client/index.html"
-  }
+    "name": "chats-chats",
+    "version": "0.1.0",
+    "private": true,
+    "dependencies": {
+        "nodemon": "^1.14.11",
+        "react": "^16.2.0",
+        "react-dom": "^16.2.0",
+        "react-scripts": "1.1.0"
+    },
+    "scripts": {
+        "start": "react-scripts start",
+        "build": "react-scripts build",
+        "test": "react-scripts test --env=jsdom",
+        "eject": "react-scripts eject",
+        "start:server": "nodemon ./server/server.js"
+    },
+    "proxy": "http://localhost:8080"
 }
