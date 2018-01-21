@@ -8,19 +8,12 @@ export class App extends Component {
         };
     }
 
-    componentDidMount() {
-        fetch("/api/hello")
-            .then(response => response.json())
-            .then(body => {
-                this.setState({ response: body.data });
-            })
-            .catch(error => console.log(error));
-    }
+    componentDidMount() {}
 
     render() {
         return (
             <div className="App">
-                <div className="content">{this.state.response}</div>
+                <div className="content">Hello Chats Chats</div>
             </div>
         );
     }
