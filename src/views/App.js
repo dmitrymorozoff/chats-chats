@@ -1,20 +1,8 @@
 import React, { Component } from "react";
+import { Registration } from "./registration";
 
 export class App extends Component {
-    constructor() {
-        super();
-        this.state = {
-            response: "",
-        };
-    }
-
-    componentDidMount() {}
-
     render() {
-        return (
-            <div className="App">
-                <div className="content">Hello Chats Chats</div>
-            </div>
-        );
+        return <Registration />;
     }
 }

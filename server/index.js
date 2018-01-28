@@ -2,6 +2,7 @@ const express = require("express");
 const app = express();
 const session = require("express-session");
 const mongoose = require("mongoose");
+const expressValidator = require("express-validator");
 const path = require("path");
 const bodyParser = require("body-parser");
 const port = process.env.PORT || 8080;
@@ -22,6 +23,7 @@ mongoose
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
+app.use(expressValidator());
 app.use(express.static(path.join(__dirname, "public")));
 app.use(
     session({
