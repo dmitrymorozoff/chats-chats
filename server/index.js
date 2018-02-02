@@ -8,8 +8,8 @@ const path = require("path");
 const bodyParser = require("body-parser");
 const port = process.env.PORT || 8080;
 const indexRouter = require("./routes/index.js");
-const registrationRouter = require("./routes/registration.js");
-const loginRouter = require("./routes/login.js");
+const singUpRouter = require("./routes/sign-up.js");
+const signInRouter = require("./routes/sign-in.js");
 const logoutRouter = require("./routes/logout.js");
 const bluebird = require("bluebird");
 const config = require("./config/index.js");
@@ -42,8 +42,8 @@ app.use(
 );
 
 app.use("/", indexRouter);
-app.use("/", registrationRouter);
-app.use("/", loginRouter);
+app.use("/", singUpRouter);
+app.use("/", signInRouter);
 app.use("/", logoutRouter);
 
 app.listen(port, () => {

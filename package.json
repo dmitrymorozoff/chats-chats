@@ -69,7 +69,7 @@
     "start:server": "nodemon ./server/index.js",
     "start:mongo": "sudo mongod"
   },
-  "proxy": "http://localhost:8080",
+  "proxy": "http://localhost:3000",
   "jest": {
     "collectCoverageFrom": [
       "src/**/*.{js,jsx,mjs}"

@@ -3,7 +3,7 @@ const router = express.Router();
 const bcrypt = require("bcryptjs");
 const User = require("../models/user");
 
-router.post("/registration", (req, res) => {
+router.post("/sign-up", (req, res) => {
     const { firstname, email, username, password, confirmPassword } = req.body;
     req.check("email", "invalid email address").isEmail();
     req.check("firstname", "firstname is empty").notEmpty();
@@ -16,7 +16,7 @@ router.post("/registration", (req, res) => {
     if (errors) {
         req.session.errors = errors;
         res.send({
-            type: "registration",
+            type: "sign-up",
             status: `error`,
         });
         console.log(`errors in registration`);
@@ -39,7 +39,7 @@ router.post("/registration", (req, res) => {
                         return;
                     } else {
                         res.send({
-                            type: "registration",
+                            type: "sign-up",
                             status: "success",
                             user: {
                                 firstname,
@@ -47,7 +47,10 @@ router.post("/registration", (req, res) => {
                                 username,
                             },
                         });
-                        console.log("success", `your registration is successful ${user}`);
+                        console.log(
+                            "success",
+                            `your registration is successful ${user}`,
+                        );
                     }
                 });
             });
