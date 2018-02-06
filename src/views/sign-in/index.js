@@ -1,6 +1,7 @@
 import React, { PureComponent } from "react";
 import { Field, reduxForm } from "redux-form";
 import { InputField } from "../../components/input-field/index";
+import { reduxFormValidator } from "../../services/redux-form-validators/";
 
 class SignIn extends PureComponent {
     usernameInput = () => {};
@@ -16,22 +17,24 @@ class SignIn extends PureComponent {
                         onSubmit={handleSubmit(this.submitHandler)}
                     >
                         <Field
-                            name="firstname"
-                            type="text"
-                            className="registration-form__input"
-                            component={InputField}
-                            placeholder="Firstname"
-                        />
-                        <Field
                             name="username"
                             type="text"
-                            className="registration-form__input"
+                            className="registration-form-item__input"
                             component={InputField}
                             placeholder="Username"
+                            validate={[reduxFormValidator.validators.required]}
+                        />
+                        <Field
+                            name="password"
+                            type="text"
+                            className="registration-form-item__input"
+                            component={InputField}
+                            placeholder="Password"
+                            validate={[reduxFormValidator.validators.required]}
                         />
                         <button
                             type="submit"
-                            className="button registration-form__submit"
+                            className="button registration-form-item__submit"
                         >
                             Sign in
                         </button>

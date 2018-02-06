@@ -3,5 +3,5 @@ const prefix = "SIGN_UP";
 export const SUBMIT = `${prefix}_SUBMIT`;
 
 export const SignUpActionCreators = {
-    submit: createAction(SUBMIT, data => data),
+    submitSignUp: createAction(SUBMIT, values => values),
 };

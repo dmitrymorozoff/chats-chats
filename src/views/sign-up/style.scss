@@ -11,8 +11,8 @@ $blue: #3c7eef;
 }
 
 .registration-card {
-    max-width: 450px;
-    min-width: 250px;
+    min-width: 360px;
+    min-height: 250px;
     background: #ffffff;
     padding: 44px 65px;
     border-radius: 2px;
@@ -23,7 +23,7 @@ $blue: #3c7eef;
     }
 }
 
-.registration-form {
+.registration-form-item {
     box-sizing: border-box;
     &__input {
         width: 100%;

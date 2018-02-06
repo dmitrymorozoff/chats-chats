@@ -7,7 +7,7 @@ import { HOST } from "../../../config/api";
 
 function* submitSignUp(action) {
     try {
-        const data = yield call(axios.get, `${HOST}sign-up"`);
+        const data = yield call(axios.post, `${HOST}sign-up"`, {});
         yield put(SignUpActionCreators.submit(data));
     } catch (error) {
         console.log(`Ошибка запроса ${error}`);

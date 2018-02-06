@@ -2,10 +2,15 @@ import React, { PureComponent } from "react";
 import { Field, reduxForm } from "redux-form";
 import "./style.scss";
 import { InputField } from "../../components/input-field/index";
+import { reduxFormValidator } from "../../services/redux-form-validators/";
+import { connect } from "react-redux";
+import { SignUpActionCreators } from "../../services/redux/root/sign-up/actions";
 
 class SignUp extends PureComponent {
     usernameInput = () => {};
-    submitHandler = () => {};
+    submitHandler = values => {
+        this.props.submitSignUp();
+    };
     render() {
         const { handleSubmit } = this.props;
         return (
@@ -22,41 +27,49 @@ class SignUp extends PureComponent {
                         <Field
                             name="firstname"
                             type="text"
-                            className="registration-form__input"
+                            className="registration-form-item__input"
                             component={InputField}
                             placeholder="Firstname"
+                            validate={[
+                                reduxFormValidator.validators.isEmail,
+                                reduxFormValidator.validators.required,
+                            ]}
                         />
                         <Field
                             name="username"
                             type="text"
-                            className="registration-form__input"
+                            className="registration-form-item__input"
                             component={InputField}
                             placeholder="Username"
+                            validate={[reduxFormValidator.validators.required]}
                         />
                         <Field
                             name="email"
                             type="text"
-                            className="registration-form__input"
+                            className="registration-form-item__input"
                             component={InputField}
                             placeholder="Email"
+                            validate={[reduxFormValidator.validators.required]}
                         />
                         <Field
                             name="password"
                             type="text"
-                            className="registration-form__input"
+                            className="registration-form-item__input"
                             component={InputField}
                             placeholder="Password"
+                            validate={[reduxFormValidator.validators.required]}
                         />
                         <Field
-                            name="confirm-password"
+                            name="confirmPassword"
                             type="text"
-                            className="registration-form__input"
+                            className="registration-form-item__input"
                             component={InputField}
                             placeholder="Confirm Password"
+                            validate={[reduxFormValidator.validators.required]}
                         />
                         <button
                             type="submit"
-                            className="button registration-form__submit"
+                            className="button registration-form-item__submit"
                         >
                             Sign up
                         </button>
@@ -66,6 +79,17 @@ class SignUp extends PureComponent {
         );
     }
 }
+
+const mapStateToProps = state => {};
+const mapDispatchToProps = dispatch => {
+    return {
+        submitSignUp: values => {
+            dispatch(SignUpActionCreators.submitSignUp(values));
+        },
+    };
+};
+
+const connected = connect(mapStateToProps, mapDispatchToProps)(SignUp);
 export default reduxForm({
     form: "registration",
-})(SignUp);
+})(connected);
