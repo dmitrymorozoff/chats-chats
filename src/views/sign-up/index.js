@@ -9,7 +9,7 @@ import { SignUpActionCreators } from "../../services/redux/root/sign-up/actions"
 class SignUp extends PureComponent {
     usernameInput = () => {};
     submitHandler = values => {
-        this.props.submitSignUp();
+        this.props.submitSignUp(values);
     };
     render() {
         const { handleSubmit } = this.props;
@@ -30,10 +30,7 @@ class SignUp extends PureComponent {
                             className="registration-form-item__input"
                             component={InputField}
                             placeholder="Firstname"
-                            validate={[
-                                reduxFormValidator.validators.isEmail,
-                                reduxFormValidator.validators.required,
-                            ]}
+                            validate={[reduxFormValidator.validators.required]}
                         />
                         <Field
                             name="username"
@@ -49,7 +46,10 @@ class SignUp extends PureComponent {
                             className="registration-form-item__input"
                             component={InputField}
                             placeholder="Email"
-                            validate={[reduxFormValidator.validators.required]}
+                            validate={[
+                                reduxFormValidator.validators.isEmail,
+                                reduxFormValidator.validators.required,
+                            ]}
                         />
                         <Field
                             name="password"
@@ -80,7 +80,7 @@ class SignUp extends PureComponent {
     }
 }
 
-const mapStateToProps = state => {};
+const mapStateToProps = state => ({});
 const mapDispatchToProps = dispatch => {
     return {
         submitSignUp: values => {

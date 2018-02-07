@@ -19,7 +19,7 @@ router.post("/sign-up", (req, res) => {
             type: "sign-up",
             status: `error`,
         });
-        console.log(`errors in registration`);
+        console.log(`errors in registration ${errors}`);
     } else {
         let newUser = new User({
             firstname,

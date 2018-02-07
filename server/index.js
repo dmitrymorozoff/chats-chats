@@ -13,6 +13,7 @@ const signInRouter = require("./routes/sign-in.js");
 const logoutRouter = require("./routes/logout.js");
 const bluebird = require("bluebird");
 const config = require("./config/index.js");
+const cors = require("cors");
 
 mongoose.Promise = bluebird;
 mongoose
@@ -23,7 +24,7 @@ mongoose
     .catch(error => {
         console.log(`error in mongodb ${error}`);
     });
-
+app.use(cors());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(expressValidator());

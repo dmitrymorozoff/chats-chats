@@ -1,13 +1,13 @@
 import { handleActions } from "redux-actions";
-import { SUBMIT } from "./actions";
+import { SET_USER_DATA } from "./actions";
 
 const initialState = { accountData: {} };
 
 export const SignUpReducer = handleActions(
     {
-        [SUBMIT]: (state, { payload }) => ({
+        [SET_USER_DATA]: (state, { payload }) => ({
             ...state,
-            accountData: { ...payload },
+            data: { ...payload },
         }),
     },
     initialState,

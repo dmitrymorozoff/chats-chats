@@ -5,10 +5,14 @@ import axios from "axios";
 import { SUBMIT } from "./actions";
 import { HOST } from "../../../config/api";
 
-function* submitSignUp(action) {
+function* submitSignUp({ payload }) {
     try {
-        const data = yield call(axios.post, `${HOST}sign-up"`, {});
-        yield put(SignUpActionCreators.submit(data));
+        const { data } = yield call(axios, {
+            method: "post",
+            url: `${HOST}sign-up`,
+            data: payload,
+        });
+        yield put(SignUpActionCreators.setUserData(data));
     } catch (error) {
         console.log(`Ошибка запроса ${error}`);
     }
