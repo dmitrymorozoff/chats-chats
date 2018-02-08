@@ -1,3 +1,4 @@
+// @flow
 import validator from "validator";
 
 export const reduxFormValidator = {

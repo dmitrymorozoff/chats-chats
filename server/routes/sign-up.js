@@ -3,7 +3,7 @@ const router = express.Router();
 const bcrypt = require("bcryptjs");
 const User = require("../models/user");
 
-router.post("/sign-up", (req, res) => {
+router.post("/sign-up", async (req, res, next) => {
     const { firstname, email, username, password, confirmPassword } = req.body;
     req.check("email", "invalid email address").isEmail();
     req.check("firstname", "firstname is empty").notEmpty();
@@ -15,46 +15,24 @@ router.post("/sign-up", (req, res) => {
     const errors = req.validationErrors();
     if (errors) {
         req.session.errors = errors;
-        res.send({
-            type: "sign-up",
-            status: `error`,
-        });
+        next(errors);
         console.log(`errors in registration ${errors}`);
     } else {
-        let newUser = new User({
-            firstname,
-            email,
-            username,
-            password,
-        });
-        bcrypt.genSalt(10, (error, salt) => {
-            bcrypt.hash(newUser.password, salt, (error, hash) => {
-                if (error) {
-                    console.log(`error in hash bcrypt ${error}`);
-                }
-                newUser.password = hash;
-                newUser.save((error, user) => {
-                    if (error) {
-                        console.log(`error in new user save ${error}`);
-                        return;
-                    } else {
-                        res.send({
-                            type: "sign-up",
-                            status: "success",
-                            user: {
-                                firstname,
-                                email,
-                                username,
-                            },
-                        });
-                        console.log(
-                            "success",
-                            `your registration is successful ${user}`,
-                        );
-                    }
-                });
+        let newUser;
+        try {
+            newUser = new User({
+                firstname,
+                email,
+                username,
+                password,
             });
-        });
+        } catch ({ message }) {
+            next({
+                message,
+                status: 400,
+            });
+        }
+        res.json(newUser);
     }
 });
 

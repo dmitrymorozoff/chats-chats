@@ -1,12 +1,29 @@
 const express = require("express");
 const router = express.Router();
-const passport = require("passport");
+const User = require("../models/user");
+const jwt = require("jsonwebtoken");
+const config = require("../config/index");
 
-router.post("/sign-in", (req, res, next) => {
-    passport.authenticate("local", {
-        successRedirect: "/",
-        failureRedirect: "/sign-in",
-    })(req, res, next);
+router.post("/sign-in", async (req, res, next) => {
+    const { username, password } = req.body;
+    const user = await User.findOne({ username });
+    if (!user) {
+        return next({
+            status: 400,
+            message: "user not found",
+        });
+    }
+    try {
+        const result = user.comparePasswords(password);
+    } catch (error) {
+        return next({
+            status: 400,
+            message: "bad credentials",
+        });
+    }
+    req.session.userId = user._id;
+    const token = jwt.sign({ _id: user._id }, config.secret);
+    res.json({ token, status: 200 });
 });
 
 module.exports = router;

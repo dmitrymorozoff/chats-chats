@@ -1,7 +1,8 @@
+// @flow
 import React from "react";
 import "./style.scss";
 
-export const InputField = field => (
+export const InputField = (field: any) => (
     <div className="registration-form-item">
         <input {...field.input} {...field} />
         {field.meta.touched &&

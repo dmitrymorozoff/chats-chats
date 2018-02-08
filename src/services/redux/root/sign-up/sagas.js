@@ -1,5 +1,5 @@
-import { takeLatest } from "redux-saga";
-import { call, put } from "redux-saga/effects";
+// @flow
+import { call, put, takeLatest, all } from "redux-saga/effects";
 import { SignUpActionCreators } from "./actions";
 import axios from "axios";
 import { SUBMIT } from "./actions";
@@ -19,5 +19,5 @@ function* submitSignUp({ payload }) {
 }
 
 export const SignUpSagas = function*() {
-    yield [takeLatest(SUBMIT, submitSignUp)];
+    yield all([takeLatest(SUBMIT, submitSignUp)]);
 };

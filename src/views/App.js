@@ -1,3 +1,4 @@
+// @flow
 import React, { Component, Fragment } from "react";
 import { Switch, Route } from "react-router-dom";
 import SignUp from "./sign-up";

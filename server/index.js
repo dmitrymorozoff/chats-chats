@@ -1,7 +1,6 @@
 const express = require("express");
 const app = express();
 const session = require("express-session");
-const passport = require("passport");
 const mongoose = require("mongoose");
 const expressValidator = require("express-validator");
 const path = require("path");
@@ -11,9 +10,12 @@ const indexRouter = require("./routes/index.js");
 const singUpRouter = require("./routes/sign-up.js");
 const signInRouter = require("./routes/sign-in.js");
 const logoutRouter = require("./routes/logout.js");
+const userRouter = require("./routes/user.js");
 const bluebird = require("bluebird");
 const config = require("./config/index.js");
 const cors = require("cors");
+const errorsHandler = require("./middlewares/errorsHandler.js");
+const checkAuthentitification = require("./middlewares/authentication.js");
 
 mongoose.Promise = bluebird;
 mongoose
@@ -29,10 +31,6 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(expressValidator());
 
-require("./config/passport")(passport);
-app.use(passport.initialize());
-app.use(passport.session());
-
 app.use(express.static(path.join(__dirname, "public")));
 app.use(
     session({
@@ -46,7 +44,14 @@ app.use("/", indexRouter);
 app.use("/", singUpRouter);
 app.use("/", signInRouter);
 app.use("/", logoutRouter);
+app.use("/", checkAuthentitification, userRouter);
+app.use("/test", checkAuthentitification, (req, res) => {
+    res.json({
+        test: "test",
+    });
+});
 
 app.listen(port, () => {
     console.log(`server started on port ${port}`);
 });
+app.use(errorsHandler);

@@ -1,3 +1,4 @@
+// @flow
 import { handleActions } from "redux-actions";
 import { SET_USER_DATA } from "./actions";
 

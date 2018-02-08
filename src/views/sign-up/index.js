@@ -1,3 +1,4 @@
+// @flow
 import React, { PureComponent } from "react";
 import { Field, reduxForm } from "redux-form";
 import "./style.scss";
@@ -6,7 +7,11 @@ import { reduxFormValidator } from "../../services/redux-form-validators/";
 import { connect } from "react-redux";
 import { SignUpActionCreators } from "../../services/redux/root/sign-up/actions";
 
-class SignUp extends PureComponent {
+type Props = {
+    handleSubmit: Function,
+};
+
+class SignUp extends PureComponent<Props> {
     usernameInput = () => {};
     submitHandler = values => {
         this.props.submitSignUp(values);
