@@ -3,14 +3,23 @@ import React, { PureComponent } from "react";
 import { Field, reduxForm } from "redux-form";
 import { InputField } from "../../components/input-field/index";
 import { reduxFormValidator } from "../../services/redux-form-validators/";
+import { connect } from "react-redux";
+import { SignInActionCreators } from "../../services/redux/root/sign-in/actions";
 
 type Props = {
     handleSubmit: Function,
+    submitSignIn: Function,
 };
 
 class SignIn extends PureComponent<Props> {
-    usernameInput = () => {};
-    submitHandler = () => {};
+    submitHandler = values => {
+        this.props.submitSignIn({
+            ...values,
+            redirect: () => {
+                this.props.history.push("/");
+            },
+        });
+    };
     render() {
         const { handleSubmit } = this.props;
         return (
@@ -49,6 +58,17 @@ class SignIn extends PureComponent<Props> {
         );
     }
 }
+
+const mapStateToProps = state => ({});
+const mapDispatchToProps = dispatch => {
+    return {
+        submitSignIn: values => {
+            dispatch(SignInActionCreators.submitSignIn(values));
+        },
+    };
+};
+
+const connected = connect(mapStateToProps, mapDispatchToProps)(SignIn);
 export default reduxForm({
     form: "login",
-})(SignIn);
+})(connected);

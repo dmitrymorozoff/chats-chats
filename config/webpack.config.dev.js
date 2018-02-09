@@ -64,7 +64,8 @@ module.exports = {
         // This is the URL that app is served from. We use "/" in development.
         publicPath: publicPath,
         // Point sourcemap entries to original disk location (format as URL on Windows)
-        devtoolModuleFilenameTemplate: info => path.resolve(info.absoluteResourcePath).replace(/\\/g, "/"),
+        devtoolModuleFilenameTemplate: info =>
+            path.resolve(info.absoluteResourcePath).replace(/\\/g, "/"),
     },
     resolve: {
         // This allows you to set a fallback for where Webpack should look for modules.
@@ -153,7 +154,7 @@ module.exports = {
                     // In production, we use a plugin to extract that CSS to a file, but
                     // in development "style" loader enables hot editing of CSS.
                     {
-                        test: /\.scss$/,
+                        test: /(\.css|\.scss)$/,
                         use: [
                             require.resolve("style-loader"),
                             {

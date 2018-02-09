@@ -32,6 +32,7 @@ router.post("/sign-up", async (req, res, next) => {
                 status: 400,
             });
         }
+        console.log("successful registration", newUser);
         res.json(newUser);
     }
 });

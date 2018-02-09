@@ -9,12 +9,17 @@ import { SignUpActionCreators } from "../../services/redux/root/sign-up/actions"
 
 type Props = {
     handleSubmit: Function,
+    submitSignUp: Function,
 };
 
 class SignUp extends PureComponent<Props> {
-    usernameInput = () => {};
     submitHandler = values => {
-        this.props.submitSignUp(values);
+        this.props.submitSignUp({
+            ...values,
+            redirect: () => {
+                this.props.history.push("/sign-in");
+            },
+        });
     };
     render() {
         const { handleSubmit } = this.props;

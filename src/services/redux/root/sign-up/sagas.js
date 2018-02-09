@@ -1,20 +1,21 @@
 // @flow
 import { call, put, takeLatest, all } from "redux-saga/effects";
-import { SignUpActionCreators } from "./actions";
+import { SignUpActionCreators, SUBMIT } from "./actions";
 import axios from "axios";
-import { SUBMIT } from "./actions";
 import { HOST } from "../../../config/api";
 
 function* submitSignUp({ payload }) {
     try {
+        const { redirect } = Object.assign({}, payload);
+        delete payload.redirect;
         const { data } = yield call(axios, {
             method: "post",
             url: `${HOST}sign-up`,
             data: payload,
         });
-        yield put(SignUpActionCreators.setUserData(data));
+        redirect();
     } catch (error) {
-        console.log(`Ошибка запроса ${error}`);
+        console.error(`Ошибка запроса ${error}`);
     }
 }
 
