@@ -9,6 +9,8 @@
 //}
 const express = require("express");
 const app = express();
+const http = require("http").Server(app);
+const io = require("socket.io")(http);
 const session = require("express-session");
 const mongoose = require("mongoose");
 const expressValidator = require("express-validator");
@@ -31,6 +33,7 @@ const renderToString = require("react-dom/server").renderToString;
 const reactRouter = require("react-router");
 const match = reactRouter.match;
 const routerContext = reactRouter.RouterContext;
+const Message = require("./models/message");
 
 mongoose.Promise = bluebird;
 mongoose
@@ -99,6 +102,33 @@ app.use("/", checkAuthentitification, userRouter);
 app.use("/test", checkAuthentitification, (req, res) => {
     res.json({
         test: "test",
+    });
+});
+
+io.on("conntection", socket => {
+    console.log("a user connected");
+    socket.on("disconnect", () => {
+        console.log("user disconnected");
+    });
+    socket.on("join", username => {
+        socket.username = username;
+    });
+    socket.on("private-message", (message, req, res, next) => {
+        const author = socket.username;
+        const body = message;
+        try {
+            let newMessage = new Message({
+                body,
+                author,
+            });
+            console.log(`successfully stored message : ${newMessage}`);
+            io.emit("private-message", newMessage);
+        } catch ({ message }) {
+            next({
+                message,
+                status: 400,
+            });
+        }
     });
 });
 
