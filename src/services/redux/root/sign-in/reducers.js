@@ -1,14 +1,22 @@
 // @flow
 import { handleActions } from "redux-actions";
-import { SET_USER_DATA } from "./actions";
+import { SUCCESS_AUTH, FAILED_AUTH } from "./actions";
 
-const initialState = { accountData: {} };
+const initialState = {
+    data: {
+        isAuth: true,
+    },
+};
 
 export const SignInReducer = handleActions(
     {
-        [SET_USER_DATA]: (state, { payload }) => ({
+        [SUCCESS_AUTH]: (state, { payload }) => ({
             ...state,
-            accountData: { ...payload },
+            data: { ...payload },
+        }),
+        [FAILED_AUTH]: (state, { payload }) => ({
+            ...state,
+            data: { ...payload },
         }),
     },
     initialState,

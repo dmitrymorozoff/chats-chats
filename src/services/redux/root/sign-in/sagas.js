@@ -1,6 +1,6 @@
 // @flow
 import { call, put, takeLatest, all } from "redux-saga/effects";
-import { SignInActionCreators, SUBMIT, SET_USER_DATA } from "./actions";
+import { SignInActionCreators, SUBMIT } from "./actions";
 import axios from "axios";
 import { HOST } from "../../../config/api";
 import { setAuthorizationToken } from "../../../utils/setAuthToken";
@@ -15,12 +15,22 @@ function* submitSignIn({ payload }) {
             data: payload,
         });
         const { token } = data;
-        console.log(data);
         localStorage.setItem("jwtToken", token);
         setAuthorizationToken(token);
-        yield put(SignInActionCreators.setUserData(data));
+        yield put(
+            SignInActionCreators.successAuth({
+                isAuth: true,
+                ...data,
+            }),
+        );
         redirect();
     } catch (error) {
+        yield put(
+            SignInActionCreators.failedAuth({
+                isAuth: false,
+                ...data,
+            }),
+        );
         console.error(`Ошибка запроса ${error}`);
     }
 }

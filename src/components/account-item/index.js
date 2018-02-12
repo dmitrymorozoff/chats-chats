@@ -6,7 +6,7 @@ import "./style.scss";
 export class AccountItem extends Component {
     render() {
         return (
-            <div className="account-item" tabindex="0">
+            <div className="account-item" tabIndex="0">
                 <div className="account-item-left">
                     <Avatar />
                 </div>

@@ -1,11 +1,11 @@
 // @flow
-import React, { PureComponent } from "react";
+import React, { Component } from "react";
 import { Siderbar } from "./components/sidebar/";
 import { IncomingMessage } from "./components/incoming-message/";
 import { OutgoingMessage } from "./components/outgoing-message/";
 import "./style.scss";
 
-export class Chat extends PureComponent {
+export class Chat extends Component {
     render() {
         return (
             <div className="chat-page">

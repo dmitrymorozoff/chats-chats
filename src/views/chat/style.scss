@@ -67,25 +67,15 @@
 }
 
 .message {
-    &--outgoing {
-        margin-left: auto;
-    }
-    &--incoming {
-        background-color: #3bd077;
-        color: #fff;
-        .message__date {
-            color: #9be7bc;
-        }
-    }
     background-color: #fff;
     max-width: 740px;
-    margin-bottom: 14px;
+    margin-bottom: 32px;
     line-height: 1.6;
     box-sizing: border-box;
     padding: 10px;
     font-size: 14px;
     color: #616663;
-    box-shadow: 0 30px 25px -20px rgba(#000000, 0.025);
+    box-shadow: 0 30px 25px -20px rgba(#000000, 0.05);
     border-radius: 8px;
     display: flex;
     flex-direction: column;
@@ -93,5 +83,16 @@
         margin-left: auto;
         color: #9da1aa;
         font-weight: bold;
+    }
+    &--outgoing {
+        margin-left: auto;
+    }
+    &--incoming {
+        background-color: #3bd077;
+        color: #fff;
+        box-shadow: 0 30px 25px -20px rgba(#3bd077, 0.25);
+        .message__date {
+            color: #9be7bc;
+        }
     }
 }
