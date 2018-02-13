@@ -1,19 +1,18 @@
 // @flow
 import React, { Component } from "react";
-import { WebsocketHelper } from '../../services/websocket/websocket-helper';
-import "./style.scss";
+import { websocketHelper } from "../../services/websocket/websocket-helper";
 
 export class Websocket extends Component {
     constructor(props) {
         super(props);
-        // this.websocket = new WebsocketHelper(serverEnvironment.ws.url);
+        this.websocket = websocketHelper;
     }
 
-    public componentDidMount() {
-        // this.websocket.connect();
+    componentDidMount() {
+        this.websocket.connect();
     }
 
-    public render() {
+    render() {
         return null;
     }
 }

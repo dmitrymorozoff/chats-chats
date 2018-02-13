@@ -9,8 +9,6 @@
 //}
 const express = require("express");
 const app = express();
-const http = require("http").Server(app);
-const io = require("socket.io")(http);
 const session = require("express-session");
 const mongoose = require("mongoose");
 const expressValidator = require("express-validator");
@@ -105,15 +103,23 @@ app.use("/test", checkAuthentitification, (req, res) => {
     });
 });
 
-io.on("conntection", socket => {
+const server = app.listen(port, () => {
+    console.log(`server started on port ${port}`);
+});
+
+const io = require("socket.io").listen(server);
+
+io.on("connection", socket => {
     console.log("a user connected");
     socket.on("disconnect", () => {
         console.log("user disconnected");
     });
-    socket.on("join", username => {
+    socket.on("join", ({ username }) => {
+        console.log(`user ${username} was joined `);
         socket.username = username;
     });
     socket.on("private-message", (message, req, res, next) => {
+        console.log(`recieve message: ${message}`);
         const author = socket.username;
         const body = message;
         try {
@@ -132,7 +138,4 @@ io.on("conntection", socket => {
     });
 });
 
-app.listen(port, () => {
-    console.log(`server started on port ${port}`);
-});
 app.use(errorsHandler);

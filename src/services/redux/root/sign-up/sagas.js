@@ -13,7 +13,6 @@ function* submitSignUp({ payload }) {
             url: `${HOST}sign-up`,
             data: payload,
         });
-        redirect();
     } catch (error) {
         console.error(`Ошибка запроса ${error}`);
     }

@@ -1,0 +1,59 @@
+.navigation {
+    display: flex;
+    width: 100%;
+    height: 100%;
+}
+
+.account {
+    display: flex;
+    margin-left: auto;
+    margin-right: 10px;
+    width: 135px;
+    height: inherit;
+    justify-content: center;
+    align-items: center;
+    padding: 5px;
+    box-sizing: border-box;
+    transition: 0.2s ease-out;
+    .avatar-wrapper {
+        cursor: pointer;
+        transition: 0.2s ease-out;
+        &:hover {
+            transform: translateX(-4px);
+        }
+        box-shadow: 0 13px 18px -11px rgba(0, 0, 0, 0.75);
+    }
+    &__name {
+        padding-right: 14px;
+        order: -1;
+        color: #acb3b0;
+        font-size: 16px;
+        font-weight: bold;
+        cursor: pointer;
+    }
+}
+
+.logo {
+    position: relative;
+    height: 100%;
+    padding-left: 70px;
+    display: flex;
+    font-size: 20px;
+    font-weight: bold;
+    color: #999999;
+    margin-left: 30px;
+    align-items: center;
+    &:before {
+        content: "";
+        position: absolute;
+        left: 0px;
+        top: 50%;
+        width: 48px;
+        height: 48px;
+        background-image: url("../../assets/logo.svg");
+        background-repeat: no-repeat;
+        background-size: contain;
+        background-position: center;
+        transform: translateY(-50%);
+    }
+}

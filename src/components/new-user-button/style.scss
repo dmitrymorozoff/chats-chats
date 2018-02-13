@@ -1,0 +1,20 @@
+.new-user-button {
+    font-family: "Nunito", sans-serif;
+    font-size: 16px;
+    color: #fff;
+    background-color: #3bd077;
+    height: 50px;
+    font-weight: bold;
+    width: 210px;
+    border: none;
+    box-shadow: 0 30px 25px -20px rgba(#3bd077, 0.5);
+    border-radius: 4px;
+    margin-bottom: 12px;
+    transition: 0.3s ease-out;
+    &:focus {
+        outline: none;
+    }
+    &:hover {
+        box-shadow: none;
+    }
+}

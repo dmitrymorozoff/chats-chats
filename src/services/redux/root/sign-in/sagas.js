@@ -20,15 +20,14 @@ function* submitSignIn({ payload }) {
         yield put(
             SignInActionCreators.successAuth({
                 isAuth: true,
-                ...data,
+                data,
             }),
         );
-        redirect();
     } catch (error) {
         yield put(
             SignInActionCreators.failedAuth({
                 isAuth: false,
-                ...data,
+                data,
             }),
         );
         console.error(`Ошибка запроса ${error}`);
