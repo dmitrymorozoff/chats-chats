@@ -32,6 +32,7 @@ const reactRouter = require("react-router");
 const match = reactRouter.match;
 const routerContext = reactRouter.RouterContext;
 const Message = require("./models/message");
+const setTestDatabase = require("./utils/setTestDatabase");
 
 mongoose.Promise = bluebird;
 mongoose
@@ -42,6 +43,8 @@ mongoose
     .catch(error => {
         console.log(`error in mongodb ${error}`);
     });
+setTestDatabase().catch(error => console.error(error.stack));
+
 app.use(cors());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -111,8 +114,8 @@ const io = require("socket.io").listen(server);
 
 io.on("connection", socket => {
     console.log("a user connected");
-    socket.on("disconnect", () => {
-        console.log("user disconnected");
+    socket.on("disconnect", socket => {
+        console.log(`user ${socket.username} disconnected`);
     });
     socket.on("join", ({ username }) => {
         console.log(`user ${username} was joined `);
