@@ -25,6 +25,7 @@ router.post("/sign-up", async (req, res, next) => {
                 email,
                 username,
                 password,
+                contacts: [],
             });
         } catch ({ message }) {
             next({

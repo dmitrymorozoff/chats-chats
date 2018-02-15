@@ -20,7 +20,9 @@ const indexRouter = require("./routes/index.js");
 const singUpRouter = require("./routes/sign-up.js");
 const signInRouter = require("./routes/sign-in.js");
 const logoutRouter = require("./routes/logout.js");
+const profileRouter = require("./routes/profile.js");
 const userRouter = require("./routes/user.js");
+const contactsRouter = require("./routes/contacts.js");
 const bluebird = require("bluebird");
 const config = require("./config/index.js");
 const cors = require("cors");
@@ -99,7 +101,9 @@ app.use("/", indexRouter);
 app.use("/", singUpRouter);
 app.use("/", signInRouter);
 app.use("/", logoutRouter);
-app.use("/", checkAuthentitification, userRouter);
+app.use("/", contactsRouter);
+app.use("/", userRouter);
+app.use("/", checkAuthentitification, profileRouter);
 app.use("/test", checkAuthentitification, (req, res) => {
     res.json({
         test: "test",

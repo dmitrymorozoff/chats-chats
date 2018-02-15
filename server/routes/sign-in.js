@@ -3,16 +3,11 @@ const router = express.Router();
 const User = require("../models/user");
 const jwt = require("jsonwebtoken");
 const config = require("../config/index");
+const { getUser } = require("../services/userService.js");
 
 router.post("/sign-in", async (req, res, next) => {
     const { username, password } = req.body;
-    const user = await User.findOne({ username });
-    if (!user) {
-        return next({
-            status: 400,
-            message: "user not found",
-        });
-    }
+    const user = await getUser({ username });
     try {
         const result = user.comparePasswords(password);
     } catch (error) {

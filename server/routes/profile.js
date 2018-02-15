@@ -1,12 +1,12 @@
 const express = require("express");
 const router = express.Router();
-const { getUser } = require("../services/userService.js");
+const { getUserByToken } = require("../services/profileService");
 
-router.get("/user", async (req, res, next) => {
-    const { username } = req.query;
+router.get("/profile", async (req, res, next) => {
+    const { token } = req;
     let user;
     try {
-        user = await getUser({ username });
+        user = await getUserByToken(token);
     } catch ({ message }) {
         return next({
             message,

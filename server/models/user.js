@@ -20,6 +20,18 @@ const UserSchema = mongoose.Schema({
         type: String,
         required: true,
     },
+    contacts: [
+        {
+            _id: {
+                type: String,
+                required: true,
+            },
+            username: {
+                type: String,
+                required: true,
+            },
+        },
+    ],
 });
 
 UserSchema.pre("save", async function(next) {
