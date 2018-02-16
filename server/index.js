@@ -125,14 +125,14 @@ io.on("connection", socket => {
         console.log(`user ${username} was joined `);
         socket.username = username;
     });
-    socket.on("private-message", ({message, toUsername}, req, res, next) => {
+    socket.on("private-message", ({ message, toUsername }, req, res, next) => {
         console.log(`recieve message: ${message}`);
         const fromUsername = socket.username;
         try {
             let newMessage = new Message({
-                fromUsername
-                message,
+                fromUsername,
                 toUsername,
+                message,
             });
             console.log(`successfully stored message : ${newMessage}`);
             io.emit("private-message", newMessage);

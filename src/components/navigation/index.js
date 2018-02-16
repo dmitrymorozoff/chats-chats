@@ -10,7 +10,13 @@ export class Navigation extends Component {
                 <div className="logo">Chats Chats</div>
                 <div className="links" />
                 <div className="account">
-                    <Avatar /> <div className="account__name">Username</div>
+                    <Avatar />{" "}
+                    <div className="account__title account__title--logout">
+                        Log out
+                    </div>
+                    <div className="account__title account__title--name">
+                        Username
+                    </div>
                 </div>
             </div>
         );

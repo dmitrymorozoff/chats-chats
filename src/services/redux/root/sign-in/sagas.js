@@ -33,6 +33,7 @@ function* submitSignIn({ payload }) {
         console.error(`Ошибка запроса ${error}`);
     }
 }
+
 export const SignInSagas = function*() {
     yield all([takeLatest(SUBMIT, submitSignIn)]);
 };

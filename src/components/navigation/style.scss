@@ -6,9 +6,9 @@
 
 .account {
     display: flex;
+    width: 220px;
     margin-left: auto;
     margin-right: 10px;
-    width: 135px;
     height: inherit;
     justify-content: center;
     align-items: center;
@@ -17,19 +17,19 @@
     transition: 0.2s ease-out;
     .avatar-wrapper {
         cursor: pointer;
-        transition: 0.2s ease-out;
-        &:hover {
-            transform: translateX(-4px);
-        }
         box-shadow: 0 13px 18px -11px rgba(0, 0, 0, 0.75);
     }
-    &__name {
+    &__title {
+        min-width: 70px;
         padding-right: 14px;
         order: -1;
         color: #acb3b0;
         font-size: 16px;
         font-weight: bold;
         cursor: pointer;
+        &--logout {
+            color: #8d8d8d;
+        }
     }
 }
 
