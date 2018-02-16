@@ -121,18 +121,18 @@ io.on("connection", socket => {
     socket.on("disconnect", socket => {
         console.log(`user ${socket.username} disconnected`);
     });
-    socket.on("join", ({ username }) => {
+    socket.on("join", ({ username, _id }) => {
         console.log(`user ${username} was joined `);
         socket.username = username;
     });
-    socket.on("private-message", (message, req, res, next) => {
+    socket.on("private-message", ({message, toUsername}, req, res, next) => {
         console.log(`recieve message: ${message}`);
-        const author = socket.username;
-        const body = message;
+        const fromUsername = socket.username;
         try {
             let newMessage = new Message({
-                body,
-                author,
+                fromUsername
+                message,
+                toUsername,
             });
             console.log(`successfully stored message : ${newMessage}`);
             io.emit("private-message", newMessage);

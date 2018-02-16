@@ -1,12 +1,17 @@
 const mongoose = require("mongoose");
 
 const MessageSchema = mongoose.Schema({
-    body: {
+    fromUsername: {
         type: String,
         required: true,
-    },
-    author: {
+    }
+    toUsername: {
         type: String,
+        required: true,
+    }
+    message: {
+        type: String,
+        required: true,
     },
 });
 

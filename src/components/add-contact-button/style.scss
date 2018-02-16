@@ -1,4 +1,4 @@
-.new-user-button {
+.new-contact-button {
     font-family: "Nunito", sans-serif;
     font-size: 16px;
     color: #fff;
@@ -17,4 +17,8 @@
     &:hover {
         box-shadow: none;
     }
+}
+
+.new-contact {
+    position: relative;
 }

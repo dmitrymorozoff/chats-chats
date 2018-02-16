@@ -1,0 +1,60 @@
+.new-contact-modal {
+    position: absolute;
+    top: 50px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 250px;
+    min-height: 100px;
+    padding: 14px 12px 10px 12px;
+    background-color: #fff;
+    z-index: 9;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 12px;
+    border-radius: 6px;
+    box-shadow: 0 30px 25px -20px rgba(0, 0, 0, 0.1);
+    box-sizing: border-box;
+}
+
+.contact {
+    height: 25px;
+    width: 100%;
+    display: flex;
+    font-size: 14px;
+    padding: 0 8px;
+    margin-top: 10px;
+    align-items: center;
+    box-sizing: border-box;
+    cursor: pointer;
+    font-weight: bold;
+    transition: 0.2s ease-out;
+    border-radius: 4px;
+    &:hover {
+        background: #f1f1f1;
+        .contact__button.button {
+            background: #f1f1f1;
+        }
+    }
+    &__button.button {
+        height: 100%;
+        width: 25px;
+        margin-left: auto;
+        position: relative;
+        background-color: #fff;
+        transition: 0.2s ease-out;
+        &:before {
+            content: "";
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            width: 14px;
+            height: 14px;
+            transform: translateX(-50%) translateY(-50%);
+            background-image: url("../../assets/add.svg");
+            background-repeat: no-repeat;
+            background-size: contain;
+            background-position: center;
+        }
+    }
+}

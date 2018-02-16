@@ -3,7 +3,7 @@ import React, { Component } from "react";
 import { Siderbar } from "./components/sidebar/";
 import { IncomingMessage } from "./components/incoming-message/";
 import { OutgoingMessage } from "./components/outgoing-message/";
-import { NewUserButton } from "../../components/new-user-button/";
+import { AddContactButton } from "../../components/add-contact-button/";
 import { Websocket } from "../../components/websocket/";
 import { Navigation } from "../../components/navigation/";
 import "./style.scss";
@@ -17,7 +17,7 @@ export class Chat extends Component {
                 </div>
                 <div className="chat-section">
                     <div className="sidebar-wrapper">
-                        <NewUserButton />
+                        <AddContactButton />
                         <label className="search-label">
                             <input
                                 className="search-users"
