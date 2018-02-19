@@ -1,6 +1,6 @@
 import { handleActions } from "redux-actions";
 import { Account } from "../interfaces/IStore";
-import { FAILED_AUTH, SUCCESS_AUTH } from "./actions";
+import { SUCCESS_AUTH } from "./actions";
 
 const initialState: Account = {
     data: {
@@ -11,7 +11,7 @@ const initialState: Account = {
             _id: "0",
             firstname: "default",
             email: "default",
-            username: "default",
+            username: "dimon",
         },
     },
 };
@@ -19,10 +19,6 @@ const initialState: Account = {
 export const SignInReducer = handleActions(
     {
         [SUCCESS_AUTH]: (state: Account, { payload }) => ({
-            ...state,
-            ...payload,
-        }),
-        [FAILED_AUTH]: (state: Account, { payload }) => ({
             ...state,
             ...payload,
         }),

@@ -30,6 +30,7 @@
     "import-export": "^1.0.1",
     "jest": "20.0.4",
     "jsonwebtoken": "^8.1.1",
+    "moment": "^2.20.1",
     "mongoose": "^5.0.6",
     "node-sass": "^4.7.2",
     "nodemon": "^1.15.0",

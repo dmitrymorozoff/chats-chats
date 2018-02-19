@@ -4,7 +4,7 @@ import { Navigation } from "../../components/navigation/";
 import { Websocket } from "../../components/websocket/";
 import { IncomingMessage } from "./components/incoming-message/";
 import { OutgoingMessage } from "./components/outgoing-message/";
-import { Siderbar } from "./components/sidebar/";
+import Siderbar from "./components/sidebar/";
 import "./style.scss";
 
 export class Chat extends React.Component {

@@ -1,4 +1,6 @@
 const User = require("../models/user");
+const { getLastMessageFromContact } = require("./messageService");
+const moment = require("moment");
 
 async function getUser({ username }) {
     let user;
@@ -43,9 +45,20 @@ async function addContact({ toUsername, _id, username }) {
 }
 
 async function getContacts({ username }) {
-    let contacts;
     const user = await getUser({ username });
-    contacts = [...user.contacts];
+    let contacts = [];
+    for (const contact of user.contacts) {
+        let { username, _id } = contact;
+        let { message: lastMessage, date } = await getLastMessageFromContact(
+            username,
+        );
+        contacts.push({
+            username,
+            _id,
+            lastMessage,
+            date: moment().format("HH:mm"),
+        });
+    }
     return contacts;
 }
 

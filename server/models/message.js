@@ -13,6 +13,10 @@ const MessageSchema = mongoose.Schema({
         type: String,
         required: true,
     },
+    date: {
+        type: Date,
+        default: Date.now,
+    },
 });
 
 const Message = (module.exports = mongoose.model("Message", MessageSchema));

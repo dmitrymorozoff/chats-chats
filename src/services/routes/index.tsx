@@ -11,7 +11,6 @@ interface Props {
 }
 
 const Routes = (props: Props) => {
-    console.log(props);
     const { account: { data: { isAuth } } } = props;
     return (
         <Switch>

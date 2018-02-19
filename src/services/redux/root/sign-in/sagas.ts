@@ -1,8 +1,8 @@
-import { call, put, takeLatest, all } from "redux-saga/effects";
-import { SignInActionCreators, SUBMIT } from "./actions";
 import axios from "axios";
+import { all, call, put, takeLatest } from "redux-saga/effects";
 import { HOST } from "../../../config/api";
 import { setAuthorizationToken } from "../../../utils/setAuthToken";
+import { SignInActionCreators, SUBMIT } from "./actions";
 
 function* submitSignIn({ payload }: any) {
     try {
@@ -21,11 +21,6 @@ function* submitSignIn({ payload }: any) {
             }),
         );
     } catch (error) {
-        yield put(
-            SignInActionCreators.failedAuth({
-                isAuth: false,
-            }),
-        );
         console.error(`Ошибка запроса ${error}`);
     }
 }
