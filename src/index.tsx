@@ -1,12 +1,12 @@
 import * as React from "react";
 import * as ReactDOM from "react-dom";
-import { App } from "./views/App";
 import { Provider } from "react-redux";
-import { createStore, applyMiddleware } from "redux";
-import { composeWithDevTools } from "redux-devtools-extension";
 import { BrowserRouter } from "react-router-dom";
-import { rootReducer, rootSaga } from "./services/redux/root/";
+import { applyMiddleware, createStore } from "redux";
+import { composeWithDevTools } from "redux-devtools-extension";
 import createSagaMiddleware from "redux-saga";
+import { rootReducer, rootSaga } from "./services/redux/root/";
+import { App } from "./views/App";
 
 const sagaMiddleware = createSagaMiddleware();
 const store = createStore(

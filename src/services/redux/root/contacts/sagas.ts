@@ -1,4 +1,4 @@
-import { put, all, takeLatest } from "redux-saga/effects";
+import { all, put, takeLatest } from "redux-saga/effects";
 // import * as axios from "axios";
 // import { HOST } from "../../../config/api";
 // import { setAuthorizationToken } from "../../../utils/setAuthToken";

@@ -1,18 +1,18 @@
 import * as React from "react";
+import { connect } from "react-redux";
 import { Field, reduxForm } from "redux-form";
 import { InputField } from "../../components/input-field/index";
 import { reduxFormValidator } from "../../services/redux-form-validators/";
-import { connect } from "react-redux";
 import { SignInActionCreators } from "../../services/redux/root/sign-in/actions";
 
-type Props = {
-    handleSubmit: Function;
-    submitSignIn: Function;
+interface Props {
+    handleSubmit: any;
+    submitSignIn: any;
     history: any;
-};
+}
 
 class SignIn extends React.PureComponent<Props> {
-    submitHandler = (values: any) => {
+    public submitHandler = (values: any) => {
         this.props.submitSignIn({
             ...values,
             redirect: () => {
@@ -20,7 +20,7 @@ class SignIn extends React.PureComponent<Props> {
             },
         });
     };
-    render() {
+    public render() {
         const { handleSubmit } = this.props;
         return (
             <div className="registration-page">

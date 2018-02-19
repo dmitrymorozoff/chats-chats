@@ -1,9 +1,9 @@
 import * as io from "socket.io-client";
-import { joinHandler } from "./utils/join-handler";
 import { JOIN } from "../../constants/events";
+import { joinHandler } from "./utils/join-handler";
 
 export class WebsocketHelper {
-    static socket: any;
+    public static socket: any;
     public isConnected: boolean;
     public address: string;
     public socket: any;
@@ -12,7 +12,7 @@ export class WebsocketHelper {
         this.address = address;
         this.socket = undefined;
     }
-    static sendMessage(event: string, data: string | object | number) {
+    public static sendMessage(event: string, data: string | object | number) {
         WebsocketHelper.socket.emit(event, data);
     }
     public connect() {

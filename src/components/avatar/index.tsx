@@ -2,7 +2,7 @@ import * as React from "react";
 import "./style.scss";
 
 export class Avatar extends React.Component {
-    render() {
+    public render() {
         return (
             <div className="avatar-wrapper">
                 <img

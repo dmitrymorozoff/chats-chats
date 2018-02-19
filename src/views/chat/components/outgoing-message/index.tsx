@@ -1,7 +1,7 @@
 import * as React from "react";
 
 export class OutgoingMessage extends React.PureComponent {
-    render() {
+    public render() {
         return (
             <div className="message message--outgoing">
                 <div className="message__content">

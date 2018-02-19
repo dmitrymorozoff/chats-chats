@@ -3,7 +3,7 @@ import { Avatar } from "../avatar/";
 import "./style.scss";
 
 export class Navigation extends React.Component {
-    render() {
+    public render() {
         return (
             <div className="navigation">
                 <div className="logo">Chats Chats</div>

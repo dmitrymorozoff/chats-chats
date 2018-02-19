@@ -3,7 +3,7 @@ import { Avatar } from "../avatar";
 import "./style.scss";
 
 export class AccountItem extends React.Component {
-    render() {
+    public render() {
         return (
             <div className="account-item">
                 <div className="account-item-left">

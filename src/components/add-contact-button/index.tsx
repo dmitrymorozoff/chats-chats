@@ -2,25 +2,23 @@ import * as React from "react";
 import { NewContactModal } from "../new-contact-modal/";
 import "./style.scss";
 
-type Props = {};
-
-type State = {
+interface State {
     isOpen: boolean;
-};
+}
 
-export class AddContactButton extends React.PureComponent<Props, State> {
-    constructor(props: Props) {
+export class AddContactButton extends React.PureComponent<{}, State> {
+    constructor(props: any) {
         super(props);
         this.state = {
             isOpen: false,
         };
     }
-    onClickHandler = () => {
+    public onClickHandler = () => {
         this.setState({
             isOpen: !this.state.isOpen,
         });
     };
-    render() {
+    public render() {
         return (
             <div className="new-contact">
                 <button

@@ -11,11 +11,11 @@ export class Websocket extends React.Component {
         this.websocket = websocketHelper;
     }
 
-    componentDidMount() {
+    public componentDidMount() {
         this.websocket.connect();
     }
 
-    render() {
+    public render() {
         return null;
     }
 }

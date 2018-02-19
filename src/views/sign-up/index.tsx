@@ -1,16 +1,16 @@
 import * as React from "react";
+import { connect } from "react-redux";
 import { Field, reduxForm } from "redux-form";
-import "./style.scss";
 import { InputField } from "../../components/input-field/index";
 import { reduxFormValidator } from "../../services/redux-form-validators/";
-import { connect } from "react-redux";
 import { SignUpActionCreators } from "../../services/redux/root/sign-up/actions";
+import "./style.scss";
 
-type Props = {
-    handleSubmit: Function;
-    submitSignUp: Function;
+interface Props {
+    handleSubmit: any;
+    submitSignUp: any;
     history: any;
-};
+}
 
 class SignUp extends React.PureComponent<Props> {
     public submitHandler = (values: any) => {
@@ -21,7 +21,7 @@ class SignUp extends React.PureComponent<Props> {
             },
         });
     };
-    render() {
+    public render() {
         const { handleSubmit } = this.props;
         return (
             <div className="registration-page">

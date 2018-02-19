@@ -1,14 +1,14 @@
 import * as React from "react";
-import { Switch, Route, Redirect } from "react-router-dom";
-import SignUp from "../../views/sign-up";
-import SignIn from "../../views/sign-in";
-import { Chat } from "../../views/chat";
 import { connect } from "react-redux";
+import { Redirect, Route, Switch } from "react-router-dom";
+import { Chat } from "../../views/chat";
+import SignIn from "../../views/sign-in";
+import SignUp from "../../views/sign-up";
 import { Account, Store } from "../redux/root/interfaces/IStore";
 
-type Props = {
+interface Props {
     account: Account;
-};
+}
 
 const Routes = (props: Props) => {
     console.log(props);

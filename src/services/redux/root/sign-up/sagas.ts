@@ -1,7 +1,7 @@
-import { call, takeLatest, all } from "redux-saga/effects";
-import { SUBMIT } from "./actions";
 import axios from "axios";
+import { all, call, takeLatest } from "redux-saga/effects";
 import { HOST } from "../../../config/api";
+import { SUBMIT } from "./actions";
 
 function* submitSignUp({ payload }: any) {
     try {

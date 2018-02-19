@@ -1,14 +1,14 @@
 import * as React from "react";
-import { Siderbar } from "./components/sidebar/";
+import { AddContactButton } from "../../components/add-contact-button/";
+import { Navigation } from "../../components/navigation/";
+import { Websocket } from "../../components/websocket/";
 import { IncomingMessage } from "./components/incoming-message/";
 import { OutgoingMessage } from "./components/outgoing-message/";
-import { AddContactButton } from "../../components/add-contact-button/";
-import { Websocket } from "../../components/websocket/";
-import { Navigation } from "../../components/navigation/";
+import { Siderbar } from "./components/sidebar/";
 import "./style.scss";
 
 export class Chat extends React.Component {
-    render() {
+    public render() {
         return (
             <div className="chat-page">
                 <div className="navigation-wrapper">

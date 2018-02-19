@@ -1,6 +1,6 @@
 import { handleActions } from "redux-actions";
-import { SUCCESS_FETCH, FAILED_FETCH } from "./actions";
 import { Store } from "../interfaces/IStore";
+import { FAILED_FETCH, SUCCESS_FETCH } from "./actions";
 
 const initialState: any = {};
 

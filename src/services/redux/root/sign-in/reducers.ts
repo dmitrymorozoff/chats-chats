@@ -1,6 +1,6 @@
 import { handleActions } from "redux-actions";
-import { SUCCESS_AUTH, FAILED_AUTH } from "./actions";
 import { Account } from "../interfaces/IStore";
+import { FAILED_AUTH, SUCCESS_AUTH } from "./actions";
 
 const initialState: Account = {
     data: {

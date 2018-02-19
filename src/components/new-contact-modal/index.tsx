@@ -1,20 +1,18 @@
 import * as React from "react";
 import "./style.scss";
 
-type Props = {};
-
-type State = {
+interface State {
     isOpen: boolean;
-};
+}
 
-export class NewContactModal extends React.PureComponent<Props, State> {
-    constructor(props: Props) {
+export class NewContactModal extends React.PureComponent<{}, State> {
+    constructor(props: any) {
         super(props);
         this.state = {
             isOpen: false,
         };
     }
-    render() {
+    public render() {
         return (
             <div className="new-contact-modal">
                 <input type="text" className="input" placeholder="Username" />
