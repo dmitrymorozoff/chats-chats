@@ -1,1 +1,1 @@
-Chats Chats - chat application
+ChatsChats
