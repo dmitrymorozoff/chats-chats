@@ -7,15 +7,14 @@ export class WebsocketHelper {
     public isConnected: boolean;
     public address: string;
     public socket: any;
-    static sendMessage(event: string, data: string | object | number) {
-        WebsocketHelper.socket.emit(event, data);
-    }
     constructor(address: string) {
         this.isConnected = false;
         this.address = address;
         this.socket = undefined;
     }
-
+    static sendMessage(event: string, data: string | object | number) {
+        WebsocketHelper.socket.emit(event, data);
+    }
     public connect() {
         this.socket = io(this.address);
         this.socket.on("connect", () => {
