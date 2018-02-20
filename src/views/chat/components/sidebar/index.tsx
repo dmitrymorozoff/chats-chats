@@ -1,5 +1,6 @@
 import * as React from "react";
 import { connect } from "react-redux";
+import { HashLoader } from "react-spinners";
 import { ContactsActionCreators } from "services/redux/root/contacts/actions";
 import { Account, Contact, Store } from "services/redux/root/interfaces/IStore";
 import { AccountItem } from "../../../../components/account-item/";
@@ -22,7 +23,11 @@ class Siderbar extends React.PureComponent<Props> {
                 <AccountItem {...contact} key={contact._id.toString()} />,
             );
         }
-        return contacts;
+        return contacts.length > 0 ? (
+            contacts
+        ) : (
+            <HashLoader color={"#3bd077"} />
+        );
     };
     public render() {
         return <div className="sidebar">{this.renderContacts()}</div>;

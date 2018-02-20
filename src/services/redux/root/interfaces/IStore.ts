@@ -5,10 +5,10 @@ export interface Store {
 }
 
 export interface Account {
+    isAuth: boolean;
     data: {
         token: string;
         status: number;
-        isAuth: boolean;
         user: {
             _id: string | number;
             firstname: string | number;

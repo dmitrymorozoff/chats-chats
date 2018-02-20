@@ -1,7 +1,10 @@
 import * as React from "react";
 import { connect } from "react-redux";
-import { Redirect, Route, Switch } from "react-router-dom";
+import { withRouter } from "react-router";
+import { Route, Switch } from "react-router-dom";
+import { isAuthorized } from "../../utils/hocs/isAuthorized";
 import { Chat } from "../../views/chat";
+import { HomePage } from "../../views/home";
 import SignIn from "../../views/sign-in";
 import SignUp from "../../views/sign-up";
 import { Account, Store } from "../redux/root/interfaces/IStore";
@@ -11,18 +14,12 @@ interface Props {
 }
 
 const Routes = (props: Props) => {
-    const { account: { data: { isAuth } } } = props;
     return (
         <Switch>
-            <Route path="/" component={Chat} />
-            <Route
-                path="/sign-up"
-                render={() => (!isAuth ? <SignUp /> : <Redirect to="/" />)}
-            />
-            <Route
-                path="/sign-in"
-                render={() => (!isAuth ? <SignIn /> : <Redirect to="/" />)}
-            />
+            <Route path="/" exact={true} component={HomePage} />
+            <Route path="/chat" component={isAuthorized(Chat)} />
+            <Route path="/sign-up" component={SignUp} />
+            <Route path="/sign-in" component={SignIn} />
         </Switch>
     );
 };
@@ -32,6 +29,8 @@ const mapStateToProps = (state: Store) => {
         account: state.account,
     };
 };
-const mapDispatchToPorps = (dispatch: any) => ({});
+const mapDispatchToProps = (dispatch: any) => ({});
 
-export default connect(mapStateToProps, mapDispatchToPorps)(Routes as any);
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(
+    Routes as any,
+) as any);

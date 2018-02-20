@@ -4,6 +4,7 @@ const Message = require("../models/message");
 
 async function setUsers() {
     await User.create({
+        _id: "5a8c1d21e3ea440648211e1c",
         firstname: "dmitry",
         email: "dima@yandex.ru",
         username: "dimon",

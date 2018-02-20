@@ -16,6 +16,7 @@
         "label-position": true,
         "max-line-length": [true, 120],
         "no-var-requires": false,
+        "no-angle-bracket-type-assertion": false,
         "member-ordering": [
             true,
             {

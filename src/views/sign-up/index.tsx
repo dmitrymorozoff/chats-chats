@@ -12,7 +12,7 @@ interface Props {
     history: any;
 }
 
-class SignUp extends React.PureComponent<Props> {
+class SignUp extends React.Component<Props> {
     public submitHandler = (values: any) => {
         this.props.submitSignUp({
             ...values,
@@ -26,7 +26,7 @@ class SignUp extends React.PureComponent<Props> {
         return (
             <div className="registration-page">
                 <div className="registration-card">
-                    <div className="registration-card__title">Sign UP</div>
+                    <div className="registration-card__title">Sign Up</div>
                     <div className="registration-card__desc">
                         Enter your email address to create your account
                     </div>

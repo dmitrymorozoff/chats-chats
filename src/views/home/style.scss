@@ -1,0 +1,40 @@
+.homepage {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #f6f9f8;
+    &-title {
+        font-size: 60px;
+        max-width: 700px;
+        margin-bottom: 20px;
+        color: #eef3f1;
+        text-align: center;
+        font-weight: lighter;
+        display: flex;
+        justify-content: center;
+        display: flex;
+        flex-wrap: wrap;
+    }
+    &-button.button {
+        width: 200px;
+        margin: 18px;
+        background-color: transparent;
+        border-radius: 5px;
+        font-weight: bold;
+        color: darken(#eef3f1, 5%);
+        font-size: 28px;
+        transition: 0.2s;
+        border-bottom: 3px solid #eef3f1;
+        &:hover {
+            color: darken(#eef3f1, 10%);
+            border-bottom: 3px solid darken(#eef3f1, 10%);
+        }
+    }
+}
+
+.homepage-button-wrapper {
+    display: flex;
+}

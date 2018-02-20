@@ -1,3 +1,4 @@
+// import { createBrowserHistory } from "history";
 import * as React from "react";
 import * as ReactDOM from "react-dom";
 import { Provider } from "react-redux";
@@ -15,6 +16,8 @@ const store = createStore(
 );
 
 sagaMiddleware.run(rootSaga);
+
+// const browserHistory = createBrowserHistory();
 
 ReactDOM.render(
     <Provider store={store}>

@@ -2,7 +2,7 @@ import axios from "axios";
 import { all, call, put, takeLatest } from "redux-saga/effects";
 import { HOST } from "../../../config/api";
 import { setAuthorizationToken } from "../../../utils/setAuthToken";
-import { SignInActionCreators, SUBMIT } from "./actions";
+import { AUTH, SignInActionCreators, SUBMIT } from "./actions";
 
 function* submitSignIn({ payload }: any) {
     try {
@@ -25,6 +25,28 @@ function* submitSignIn({ payload }: any) {
     }
 }
 
+function* getProfileByToken({ payload }: any) {
+    try {
+        setAuthorizationToken(payload);
+        const { data } = yield call(axios as any, {
+            method: "get",
+            url: `${HOST}profile`,
+        });
+        console.log(data);
+        yield put(
+            SignInActionCreators.successAuth({
+                isAuth: true,
+                data,
+            }),
+        );
+    } catch (error) {
+        console.error(`Ошибка запроса ${error}`);
+    }
+}
+
 export const SignInSagas = function*() {
-    yield all([takeLatest(SUBMIT, submitSignIn)]);
+    yield all([
+        takeLatest(SUBMIT, submitSignIn),
+        takeLatest(AUTH as any, getProfileByToken),
+    ]);
 };

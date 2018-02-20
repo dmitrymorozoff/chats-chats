@@ -3,10 +3,10 @@ import { Account } from "../interfaces/IStore";
 import { SUCCESS_AUTH } from "./actions";
 
 const initialState: Account = {
+    isAuth: false,
     data: {
         token: "",
         status: 0,
-        isAuth: false,
         user: {
             _id: "0",
             firstname: "default",

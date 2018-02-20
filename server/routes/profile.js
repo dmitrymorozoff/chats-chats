@@ -7,6 +7,7 @@ router.get("/profile", async (req, res, next) => {
     let user;
     try {
         user = await getUserByToken(token);
+        console.log(user);
     } catch ({ message }) {
         return next({
             message,

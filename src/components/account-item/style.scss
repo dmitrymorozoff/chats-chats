@@ -53,7 +53,7 @@
         }
         &__short-message {
             font-size: 13px;
-            max-height: 74px;
+            max-height: 78px;
             overflow: hidden;
             line-height: 1.6;
             color: #a6aab5;
@@ -64,12 +64,13 @@
 
 .account-item-block {
     display: flex;
-    padding-bottom: 16px;
+    padding-bottom: 13px;
     font-size: 14px;
     color: #a6aab5;
     &__name {
         color: #3bd077;
         transition: 0.3s ease-out;
+        text-transform: capitalize;
     }
     &__time {
         margin-left: auto;

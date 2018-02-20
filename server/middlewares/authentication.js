@@ -10,6 +10,7 @@ const checkAuthentification = function(req, res, next) {
         });
     }
     let tocketObg;
+
     try {
         tocketObg = jwt.verify(token, config.secret);
     } catch ({ message }) {

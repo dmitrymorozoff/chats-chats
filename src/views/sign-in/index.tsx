@@ -1,6 +1,9 @@
+import { History } from "history";
 import * as React from "react";
 import { connect } from "react-redux";
+import { withRouter } from "react-router";
 import { Field, reduxForm } from "redux-form";
+import { Account, Store } from "services/redux/root/interfaces/IStore";
 import { InputField } from "../../components/input-field/index";
 import { reduxFormValidator } from "../../services/redux-form-validators/";
 import { SignInActionCreators } from "../../services/redux/root/sign-in/actions";
@@ -8,10 +11,16 @@ import { SignInActionCreators } from "../../services/redux/root/sign-in/actions"
 interface Props {
     handleSubmit: any;
     submitSignIn: any;
-    history: any;
+    history: History;
+    account: Account;
 }
 
-class SignIn extends React.PureComponent<Props> {
+class SignIn extends React.Component<Props> {
+    public componentWillReceiveProps(nextProps: Props) {
+        if (nextProps.account.isAuth) {
+            this.props.history.push("/chat");
+        }
+    }
     public submitHandler = (values: any) => {
         this.props.submitSignIn({
             ...values,
@@ -40,7 +49,7 @@ class SignIn extends React.PureComponent<Props> {
                         />
                         <Field
                             name="password"
-                            type="text"
+                            type="password"
                             className="registration-form-item__input"
                             component={InputField}
                             placeholder="Password"
@@ -59,7 +68,10 @@ class SignIn extends React.PureComponent<Props> {
     }
 }
 
-const mapStateToProps = (state: any) => ({});
+const mapStateToProps = (state: Store) => ({
+    account: state.account,
+});
+
 const mapDispatchToProps = (dispatch: any) => {
     return {
         submitSignIn: (values: any) => {
@@ -68,7 +80,10 @@ const mapDispatchToProps = (dispatch: any) => {
     };
 };
 
-const connected = connect(mapStateToProps, mapDispatchToProps)(SignIn as any);
+const connected = withRouter(connect(mapStateToProps, mapDispatchToProps)(
+    SignIn as any,
+) as any);
+
 export default reduxForm({
     form: "login",
 })(connected as any);

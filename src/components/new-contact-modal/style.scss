@@ -18,16 +18,16 @@
 }
 
 .contact {
-    height: 25px;
+    height: 30px;
     width: 100%;
     display: flex;
-    font-size: 14px;
-    padding: 0 8px;
+    font-size: 28px;
+    padding: 10px 8px;
     margin-top: 10px;
     align-items: center;
     box-sizing: border-box;
     cursor: pointer;
-    font-weight: bold;
+    color: #a6aab5;
     transition: 0.2s ease-out;
     border-radius: 4px;
     &:hover {
