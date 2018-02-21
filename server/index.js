@@ -21,6 +21,7 @@ const singUpRouter = require("./routes/sign-up.js");
 const signInRouter = require("./routes/sign-in.js");
 const logoutRouter = require("./routes/logout.js");
 const profileRouter = require("./routes/profile.js");
+const messagesRouter = require("./routes/messages.js");
 const userRouter = require("./routes/user.js");
 const contactsRouter = require("./routes/contacts.js");
 const bluebird = require("bluebird");
@@ -103,46 +104,16 @@ app.use("/", signInRouter);
 app.use("/", logoutRouter);
 app.use("/", contactsRouter);
 app.use("/", userRouter);
+app.use("/", messagesRouter);
 app.use("/", checkAuthentitification, profileRouter);
 app.use("/test", checkAuthentitification, (req, res) => {
     res.json({
         test: "test",
     });
 });
+app.use(errorsHandler);
 
 const server = app.listen(port, () => {
     console.log(`server started on port ${port}`);
 });
-
-const io = require("socket.io").listen(server);
-
-io.on("connection", socket => {
-    console.log("a user connected");
-    socket.on("disconnect", socket => {
-        console.log(`user ${socket.username} disconnected`);
-    });
-    socket.on("join", ({ username, _id }) => {
-        console.log(`user ${username} was joined `);
-        socket.username = username;
-    });
-    socket.on("private-message", ({ message, toUsername }, req, res, next) => {
-        console.log(`recieve message: ${message}`);
-        const fromUsername = socket.username;
-        try {
-            let newMessage = new Message({
-                fromUsername,
-                toUsername,
-                message,
-            });
-            console.log(`successfully stored message : ${newMessage}`);
-            io.emit("private-message", newMessage);
-        } catch ({ message }) {
-            next({
-                message,
-                status: 400,
-            });
-        }
-    });
-});
-
-app.use(errorsHandler);
+const io = require("./socket/socket-connection")(server);

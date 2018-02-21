@@ -2,6 +2,7 @@ const express = require("express");
 const router = express.Router();
 const bcrypt = require("bcryptjs");
 const User = require("../models/user");
+const { BAD_REQUEST } = require("../errors/errorsType");
 
 router.post("/sign-up", async (req, res, next) => {
     const { firstname, email, username, password, confirmPassword } = req.body;
@@ -16,7 +17,6 @@ router.post("/sign-up", async (req, res, next) => {
     if (errors) {
         req.session.errors = errors;
         next(errors);
-        console.log(`errors in registration ${errors}`);
     } else {
         let newUser;
         try {
@@ -27,14 +27,14 @@ router.post("/sign-up", async (req, res, next) => {
                 password,
                 contacts: [],
             });
+            console.log("successful registration", newUser);
+            res.json(newUser);
         } catch ({ message }) {
             next({
                 message,
-                status: 400,
+                ...BAD_REQUEST,
             });
         }
-        console.log("successful registration", newUser);
-        res.json(newUser);
     }
 });
 

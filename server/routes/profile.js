@@ -1,20 +1,19 @@
 const express = require("express");
 const router = express.Router();
 const { getUserByToken } = require("../services/profileService");
+const { INTERNAL_SERVER_ERROR } = require("../errors/errorsType");
 
 router.get("/profile", async (req, res, next) => {
     const { token } = req;
-    let user;
     try {
-        user = await getUserByToken(token);
-        console.log(user);
+        const user = await getUserByToken(token);
+        return res.json(user);
     } catch ({ message }) {
         return next({
             message,
-            status: 500,
+            ...INTERNAL_SERVER_ERROR,
         });
     }
-    return res.json(user);
 });
 
 module.exports = router;

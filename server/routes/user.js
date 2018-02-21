@@ -1,6 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const { getUser } = require("../services/userService.js");
+const { INTERNAL_SERVER_ERROR } = require("../errors/errorsType");
 
 router.get("/user", async (req, res, next) => {
     const { username } = req.query;
@@ -10,7 +11,7 @@ router.get("/user", async (req, res, next) => {
     } catch ({ message }) {
         return next({
             message,
-            status: 500,
+            ...INTERNAL_SERVER_ERROR,
         });
     }
     return res.json(user);

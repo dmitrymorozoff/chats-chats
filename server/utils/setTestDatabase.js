@@ -18,6 +18,10 @@ async function setUsers() {
                 _id: "2",
                 username: "feduk",
             },
+            {
+                _id: "3",
+                username: "petro",
+            },
         ],
     });
     await User.create({
@@ -32,6 +36,13 @@ async function setUsers() {
         email: "fedor@yandex.ru",
         username: "feduk",
         password: "111111",
+        contacts: [],
+    });
+    await User.create({
+        firstname: "peter",
+        email: "peter@yandex.ru",
+        username: "petro",
+        password: "222222",
         contacts: [],
     });
 }
@@ -54,6 +65,12 @@ async function setMessages() {
         toUsername: "dimon",
         message:
             "You can also get the attention of the whole room by @mentioning “everyone.” Doing so sends everyone in the room a notification, making it extremely useful for company/organization announcements, reminders, and much more. ",
+    });
+    await Message.create({
+        fromUsername: "petro",
+        toUsername: "dimon",
+        message:
+            "To add a third-party messaging service, choose Add Account from the Message menu. Then choose an account provider and follow the onscreen instructions from that provider.",
     });
 }
 

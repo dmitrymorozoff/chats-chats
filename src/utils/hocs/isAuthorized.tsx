@@ -12,7 +12,6 @@ interface Props {
 export function isAuthorized(ComposedComponent: any) {
     class Authenticate extends React.Component<Props> {
         public componentWillMount() {
-            console.log(this.props.account.isAuth);
             if (!this.props.account.isAuth) {
                 this.props.history.push("/");
             }
