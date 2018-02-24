@@ -1,0 +1,15 @@
+{
+  "search.exclude": {
+    ".git": true,
+    ".vscode": true,
+    "dist": true
+  },
+  "editor.formatOnSave": true,
+  "editor.formatOnType": true,
+  "prettier.printWidth": 80,
+  "prettier.tabWidth": 4,
+  "prettier.trailingComma": "all",
+  "tslint.jsEnable": true,
+  "tslint.autoFixOnSave": true,
+  "files.insertFinalNewline": true
+}

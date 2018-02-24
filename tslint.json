@@ -1,5 +1,10 @@
 {
     "extends": ["tslint:recommended", "tslint-react"],
+    "linterOptions": {
+        "exclude": [
+            "server",
+        ]
+    },
     "rules": {
         "align": [true, "parameters", "arguments", "statements"],
         "ban": false,

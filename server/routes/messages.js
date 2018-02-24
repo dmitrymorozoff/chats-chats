@@ -12,10 +12,10 @@ router.get("/messages", async (req, res, next) => {
     } = req.query;
     try {
         const messages = await getMessagesByUsername({
-            fromUsername,
-            toUsername,
             count,
+            fromUsername,
             skip,
+            toUsername,
         });
         return res.json(messages);
     } catch ({ message }) {
